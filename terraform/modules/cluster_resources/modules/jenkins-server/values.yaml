@@ -40,6 +40,7 @@ controller:
     - workflow-aggregator:608.v67378e9d3db_1
     - git:5.7.0
     - configuration-as-code:1967.va_968e15fd05b_
+    # - docker-plugin:1274.vc0203fdf2e74
 
   installLatestPlugins: true
 

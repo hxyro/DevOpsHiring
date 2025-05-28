@@ -13,7 +13,7 @@ module "cert_manager" {
   namespace = "cert-manager"
 }
 
-module "jenkins" {
-  source = "./modules/jenkins-server"
-  namespace = "jenkins"
-}
+# module "jenkins" {
+#   source = "./modules/jenkins-server"
+#   namespace = "jenkins"
+# }
