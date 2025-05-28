@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+images:
+  - name: registry.digitalocean.com/hxyro-test/flask-backend
+    newTag: latest
+
+resources:
+  # ConfigMap
+  - config/configmap.yaml
+  # Deployments
+  - deployments/flask-backend.yaml
+  # Service
+  - service/flask-backend.yaml
+  # Ingress
+  - ingress/ingress.yaml

@@ -12,5 +12,5 @@ variable "region" {
 variable "registry_subscription_tier_slug" {
   description = "Subscription tier for the Docker registry"
   type        = string
-  default     = "starter"
+  default     = "basic"
 }

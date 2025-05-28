@@ -5,6 +5,7 @@ credentialsId:
 renderHelmLabels: true
 
 controller:
+  JCasC.defaultConfig: true
   componentName: "jenkins-controller"
   disableRememberMe: false
   numExecutors: 0
@@ -144,6 +145,7 @@ controller:
 #        /MwpRxxazoda9r45kqQpyG+XoM4pB+Fd3JzMc4FUGxfVPxJU4jLawnJJiZ3vqiSyaB0YyUL+Er1Q
 #        6NnqtR4gEBF0ZVlQmkycFvD4EC2boP943dLqNUvop+4R3SM1QMM6P5u8iTXtHd/VN4MwMyy1wtog
 #        hYAzODo1Jt59pcqqKJEas0C/lFJEB3frw4ImNx5fNlJYOpx+ijfQs9m39CevDq0=
+
 
 agent:
   enabled: true
@@ -399,22 +401,23 @@ agent:
   # controller.JCasC.defaultConfig: true
   # Best reference is https://<jenkins_url>/configuration-as-code/reference#Cloud-kubernetes. The example below creates a python pod template.
   # -- Configures extra pod templates for the default kubernetes cloud
-  podTemplates: {}
-  #  python: |
-  #    - name: python
-  #      label: jenkins-python
-  #      serviceAccount: jenkins
-  #      containers:
-  #        - name: python
-  #          image: python:3
-  #          command: "/bin/sh -c"
-  #          args: "cat"
-  #          ttyEnabled: true
-  #          privileged: true
-  #          resourceRequestCpu: "400m"
-  #          resourceRequestMemory: "512Mi"
-  #          resourceLimitCpu: "1"
-  #          resourceLimitMemory: "1024Mi"
+  podTemplates:
+   runner: |
+     - name: runner
+       label: runner
+       serviceAccount: jenkins
+       containers:
+         - name: runner
+           image: registry.digitalocean.com/hxyro-test/jenkins
+           command: "/bin/sh -c"
+           args: "tail -f /dev/null"
+           imagePullPolicy: "Always"
+           ttyEnabled: true
+           privileged: true
+           resourceRequestCpu: "400m"
+           resourceRequestMemory: "512Mi"
+           resourceLimitCpu: "1"
+           resourceLimitMemory: "1024Mi"
 
 persistence:
   enabled: true

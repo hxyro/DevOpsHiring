@@ -5,7 +5,7 @@
 set -e
 
 # Print the environment mode
-echo "Running in $APP_ENV mode (FLASK_ENV=$FLASK_ENV)"
+echo "Running in $FLASK_ENV mode (FLASK_ENV=$FLASK_ENV)"
 
 # Run The Flask application using Gunicorn
 exec gunicorn --bind "${FLASK_RUN_HOST}:${FLASK_RUN_PORT}" app:app
