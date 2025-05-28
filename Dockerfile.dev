@@ -1,0 +1,15 @@
+FROM python:3.11-alpine
+
+WORKDIR /app
+
+# Copy requirements files
+COPY requirements.txt .
+
+#Installing Requirement.txt# Install base dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the application code
+COPY app.py .
+
+# Expose the port the app runs on
+EXPOSE 5001
